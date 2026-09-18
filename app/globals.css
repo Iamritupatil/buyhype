@@ -15,7 +15,7 @@
 
 @font-face {
   font-family: "Geist Pixel Circle";
-  src: url("fonts/GeistPixel-Circle.woff2") format("woff2");
+  src: url("/fonts/GeistPixel-Circle.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -199,6 +199,26 @@ a {
   background: #323234;
   color: #fff;
   transform: translateY(-1px);
+}
+
+button.cta-pill,
+button.mobile-cta {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+}
+
+.cta-slot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.cta-slot .cl-userButtonBox,
+.cta-slot .cl-userButtonTrigger {
+  width: clamp(40px, 4.4vw, 46px);
+  height: clamp(40px, 4.4vw, 46px);
 }
 
 .burger {
@@ -599,7 +619,7 @@ a {
 
 @media (max-width: 720px) {
   .nav-pill,
-  .cta-pill {
+  .cta-slot {
     display: none;
   }
 
@@ -727,4 +747,252 @@ a {
     transform: none !important;
     filter: none !important;
   }
+}
+
+/* ---------- App shell (Alerts / Sign-in / Sign-up) ---------- */
+
+.app-shell {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(16px, 2.4vh, 28px) clamp(14px, 3vw, 32px) 60px;
+}
+
+.app-topbar {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: clamp(28px, 5vh, 56px);
+}
+
+.app-topbar .logo {
+  width: clamp(40px, 4.4vw, 46px);
+  height: clamp(40px, 4.4vw, 46px);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: var(--nav-shadow);
+  display: grid;
+  place-items: center;
+}
+
+.app-topbar .logo img {
+  width: 72%;
+  height: 72%;
+  object-fit: contain;
+}
+
+.app-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.app-back-link {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.app-back-link:hover {
+  color: #fff;
+}
+
+.app-main {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vh, 32px);
+}
+
+.app-heading {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: #fff;
+  font-size: clamp(24px, 4vw, 34px);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.app-subheading {
+  font-family: var(--font-sans);
+  color: #d0d0d0;
+  opacity: 0.8;
+  font-size: 14.5px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.panel {
+  background: #0d0d0e;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: clamp(18px, 3vw, 26px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.panel-title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 15px;
+  color: #fff;
+  margin: 0;
+}
+
+.field-row {
+  display: flex;
+  gap: 10px;
+}
+
+.field-input {
+  flex: 1;
+  background: #1a1a1c;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: #fff;
+  outline: none;
+  transition: border-color 0.2s ease;
+  min-width: 0;
+}
+
+.field-input::placeholder {
+  color: var(--muted);
+}
+
+.field-input:focus {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.field-submit {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  background: #fff;
+  color: #000;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.field-submit:hover {
+  transform: translateY(-1px);
+}
+
+.field-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.form-note {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.form-note.is-error {
+  color: #ff8080;
+}
+
+.form-note.is-success {
+  color: #8ce29b;
+}
+
+.alert-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.alert-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1a1a1c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 10px 14px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: #fff;
+}
+
+.alert-item-remove {
+  appearance: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 13px;
+}
+
+.alert-item-remove:hover {
+  color: #ff8080;
+}
+
+.alert-empty {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--muted);
+}
+
+@media (max-width: 480px) {
+  .field-row {
+    flex-direction: column;
+  }
+
+  .field-submit {
+    width: 100%;
+  }
+}
+
+/* ---------- Clerk auth pages ---------- */
+
+.auth-shell {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 24px;
+}
+
+.auth-shell .logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: var(--nav-shadow);
+  display: grid;
+  place-items: center;
+}
+
+.auth-shell .logo img {
+  width: 72%;
+  height: 72%;
+  object-fit: contain;
 }
