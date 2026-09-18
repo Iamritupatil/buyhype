@@ -221,6 +221,24 @@ button.mobile-cta {
   height: clamp(40px, 4.4vw, 46px);
 }
 
+.cta-slot .cl-userButtonBox,
+.cta-slot .cl-userButtonTrigger,
+.cta-slot .cl-userButtonAvatarBox,
+.cta-slot .cl-avatarBox {
+  display: block;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.cta-slot .cl-userButtonAvatarBox,
+.cta-slot .cl-avatarBox,
+.cta-slot .cl-userButtonAvatarImage,
+.cta-slot .cl-avatarImage {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+
 .burger {
   display: none;
 }
