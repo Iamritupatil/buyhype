@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Header from "@/components/Header";
 import StatsFooter from "@/components/StatsFooter";
 
@@ -51,9 +52,9 @@ export default function HomePage() {
             before the rest of the internet catches on.
           </p>
 
-          <a href="#" className="cta-btn" style={{ "--d": "0.4s" }}>
-            See What&apos;s Rising
-          </a>
+          <Link href="/waitlist" className="cta-btn" style={{ "--d": "0.4s" }}>
+            Join the Waitlist
+          </Link>
         </main>
 
         <StatsFooter />

@@ -1,21 +1,10 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
 
-const PROTECTED_PATH_PATTERNS = [/^\/alerts(?:\/.*)?$/, /^\/api\/alerts(?:\/.*)?$/];
-
-// Clerk's createRouteMatcher reads req.nextUrl.pathname, a Next.js-specific
-// property that isn't present on the plain Fetch API Request Vercel passes
-// to middleware here. Match against req.url directly instead, which every
-// Request object has regardless of runtime.
-function isProtectedRoute(req) {
-  const pathname = new URL(req.url).pathname;
-  return PROTECTED_PATH_PATTERNS.some((pattern) => pattern.test(pathname));
-}
-
-export default clerkMiddleware(async (auth, req) => {
-  if (isProtectedRoute(req)) {
-    await auth.protect();
-  }
-});
+// No protected routes pre-launch — everything is public (landing page,
+// coming-soon placeholders, and the Clerk waitlist). Middleware is still
+// needed so Clerk can manage session/auth state and its own /__clerk
+// auto-proxy path.
+export default clerkMiddleware();
 
 export const config = {
   matcher: [
