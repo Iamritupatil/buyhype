@@ -1,9 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -37,34 +35,24 @@ export default function Header() {
         </Link>
 
         <nav className="nav-pill" aria-label="Primary">
-          <a href="#" className="nav-link active">
+          <Link href="/" className="nav-link active">
             Discover
-          </a>
-          <a href="#" className="nav-link">
+          </Link>
+          <Link href="/coming-soon?from=Opportunities" className="nav-link">
             Opportunities
-          </a>
-          <a href="#" className="nav-link">
+          </Link>
+          <Link href="/coming-soon?from=Domains" className="nav-link">
             Domains
-          </a>
-          <a href="#" className="nav-link">
+          </Link>
+          <Link href="/coming-soon?from=About" className="nav-link">
             About
-          </a>
+          </Link>
         </nav>
 
         <div className="cta-slot">
-          <SignedOut>
-            <SignInButton mode="modal">
-              <button type="button" className="cta-pill">
-                Explore
-              </button>
-            </SignInButton>
-          </SignedOut>
-          <SignedIn>
-            <Link href="/alerts" className="cta-pill">
-              Alerts
-            </Link>
-            <UserButton afterSignOutUrl="/" />
-          </SignedIn>
+          <Link href="/waitlist" className="cta-pill">
+            Waitlist
+          </Link>
         </div>
 
         <button
@@ -90,30 +78,33 @@ export default function Header() {
         }}
       >
         <nav className="mobile-sheet" aria-label="Mobile">
-          <a href="#" className="mobile-link active" onClick={closeMenu}>
+          <Link href="/" className="mobile-link active" onClick={closeMenu}>
             <span className="mobile-link-label">Discover</span>
-          </a>
-          <a href="#" className="mobile-link" onClick={closeMenu}>
+          </Link>
+          <Link
+            href="/coming-soon?from=Opportunities"
+            className="mobile-link"
+            onClick={closeMenu}
+          >
             <span className="mobile-link-label">Opportunities</span>
-          </a>
-          <a href="#" className="mobile-link" onClick={closeMenu}>
+          </Link>
+          <Link
+            href="/coming-soon?from=Domains"
+            className="mobile-link"
+            onClick={closeMenu}
+          >
             <span className="mobile-link-label">Domains</span>
-          </a>
-          <a href="#" className="mobile-link" onClick={closeMenu}>
+          </Link>
+          <Link
+            href="/coming-soon?from=About"
+            className="mobile-link"
+            onClick={closeMenu}
+          >
             <span className="mobile-link-label">About</span>
-          </a>
-          <SignedOut>
-            <SignInButton mode="modal">
-              <button type="button" className="mobile-cta">
-                Explore BuyHype
-              </button>
-            </SignInButton>
-          </SignedOut>
-          <SignedIn>
-            <Link href="/alerts" className="mobile-cta" onClick={closeMenu}>
-              My Alerts
-            </Link>
-          </SignedIn>
+          </Link>
+          <Link href="/waitlist" className="mobile-cta" onClick={closeMenu}>
+            Join the Waitlist
+          </Link>
         </nav>
       </div>
     </>
